@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECG Signal Toolbox</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- Link to your custom CSS file -->
+</head>
+<body>
+    <header>
+        <h1>ECG Signal Toolbox</h1>
+    </header>
+    <nav>
+        <!-- Your navigation links here -->
+    </nav>
+    <div class="container">
+        <div class="content">
+            <form id="sampling-form" action="/run_analysis" method="post">
+                <label for="sampling_rate">Sampling Rate:</label>
+                <input type="number" id="sampling_rate" name="sampling_rate" required>
+                <button class="button" type="submit">Run Analysis</button>
+            </form>
+            <div id="analysis-options" style="display: none;">
+                <h2>Analysis Options</h2>
+                <form id="analysis-form" action="/show_results" method="post">
+                    <h3>Choose Graphs to Display:</h3>
+                    <label><input type="checkbox" name="show_ecg_plot" value="1"> ECG Plot</label><br>
+                    <!-- Add more checkboxes for other graphs -->
+                    <h3>Choose Results to Display:</h3>
+                    <label><input type="checkbox" name="show_hrv_behavior" value="1"> HRV and Behavioral Patterns</label><br>
+                    <!-- Add more checkboxes for other results -->
+                    <button class="button" type="submit">Show Selected Graphs/Results</button>
+                </form>
+            </div>
+            <div id="result-options" style="display: none;">
+                <h2>Result Options</h2>
+                <!-- Use JavaScript to populate this dropdown dynamically -->
+                <select id="result-dropdown">
+                    <!-- Options will be populated using JavaScript -->
+                </select>
+                <button class="button" id="show-result-button">Show Selected Result</button>
+            </div>
+            <main id="main-content">
+                <!-- Display the visualizations and results here -->
+            </main>
+        </div>
+    </div>
+    <footer>
+        <!-- Your footer content here -->
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

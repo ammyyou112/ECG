@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECG Signal Toolbox</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> <!-- Link to your custom CSS file -->
+</head>
+<body>
+    <header>
+        <h1>ECG Signal Toolbox</h1>
+    </header>
+    <nav>
+        <!-- Your navigation links here -->
+    </nav>
+    <div class="container">
+        <div class="content">
+            <form action="/run_analysis" method="post">
+                <label for="sampling_rate">Sampling Rate:</label>
+                <input type="number" id="sampling_rate" name="sampling_rate" required>
+                <button class="button" type="submit">Run Analysis</button>
+            </form>
+            <main>
+                <h2>Analysis Results</h2>
+                <!-- Display the visualizations here -->
+                <div class="visualization">
+                    {{ ecg_plot_div | safe }}
+                    {{ hrv_behavior_div | safe }}
+                    {{ behavioral_analysis_div | safe }}
+                    {{ correlation_heatmap_div | safe }}
+                    {{ statistical_analysis_div | safe }}
+                    {{ interpretation_div | safe }}
+                </div>
+            </main>
+        </div>
+    </div>
+    <footer>
+        <!-- Your footer content here -->
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
